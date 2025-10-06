@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía - Cien años de soledad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(118, 75, 162, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            animation: pulse 10s ease-in-out infinite;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            border: 5px solid #667eea;
+            padding: 40px;
+            box-shadow: 
+                0 25px 70px rgba(102, 126, 234, 0.4),
+                0 0 0 10px rgba(255, 255, 255, 0.1),
+                0 0 0 20px rgba(102, 126, 234, 0.1);
+            border-radius: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container::before,
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.2), transparent);
+            pointer-events: none;
+        }
+
+        .container::before {
+            top: -50px;
+            left: -50px;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .container::after {
+            bottom: -50px;
+            right: -50px;
+            animation: pulse 8s ease-in-out infinite 4s;
+        }
+
+        .decorative-corner {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 3px solid #667eea;
+            pointer-events: none;
+        }
+
+        .decorative-corner.top-left {
+            top: 15px;
+            left: 15px;
+            border-right: none;
+            border-bottom: none;
+            border-radius: 15px 0 0 0;
+        }
+
+        .decorative-corner.top-right {
+            top: 15px;
+            right: 15px;
+            border-left: none;
+            border-bottom: none;
+            border-radius: 0 15px 0 0;
+        }
+
+        .decorative-corner.bottom-left {
+            bottom: 15px;
+            left: 15px;
+            border-right: none;
+            border-top: none;
+            border-radius: 0 0 0 15px;
+        }
+
+        .decorative-corner.bottom-right {
+            bottom: 15px;
+            right: 15px;
+            border-left: none;
+            border-top: none;
+            border-radius: 0 0 15px 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding: 30px 0;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            border-radius: 2px;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #764ba2, transparent);
+            border-radius: 2px;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            color: #667eea;
+            font-weight: bold;
+            text-shadow: 
+                3px 3px 6px rgba(102, 126, 234, 0.3),
+                0 0 20px rgba(102, 126, 234, 0.2);
+            text-align: center;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px 0;
+            position: relative;
+            letter-spacing: 2px;
+        }
+
+        .header h1::before,
+        .header h1::after {
+            content: '✦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #764ba2;
+            font-size: 0.5em;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .header h1::before {
+            left: 20px;
+        }
+
+        .header h1::after {
+            right: 20px;
+        }
+
+        .footer-image {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 280px 1fr 280px;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: start;
+            position: relative;
+        }
+
+        .left-column, .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: relative;
+        }
+
+        .left-column::before,
+        .right-column::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, #667eea, transparent);
+        }
+
+        .left-column::before {
+            right: -15px;
+            top: 0;
+        }
+
+        .right-column::after {
+            left: -15px;
+            top: 0;
+        }
+
+        .info-box {
+            border: 3px solid #667eea;
+            padding: 0;
+            background: linear-gradient(145deg, #e8eafc 0%, #f5f6ff 100%);
+            min-height: 140px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                6px 6px 18px rgba(0, 0, 0, 0.15), 
+                -3px -3px 10px rgba(255, 255, 255, 0.7),
+                inset 0 0 20px rgba(102, 126, 234, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 55px;
+            background: linear-gradient(180deg, #d4d7f7 0%, rgba(232, 234, 252, 0) 100%);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+            opacity: 0.7;
+        }
+
+        .info-box::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent 70%
+            );
+            animation: shimmer 3s infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .info-box:hover::after {
+            opacity: 1;
+        }
+
+        .info-box:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 
+                10px 10px 30px rgba(0, 0, 0, 0.25), 
+                -4px -4px 15px rgba(255, 255, 255, 0.8),
+                0 0 30px rgba(102, 126, 234, 0.3);
+            border-color: #764ba2;
+        }
+
+        .info-box h3 {
+            font-size: 1.2em;
+            margin: 0;
+            padding: 20px;
+            color: #667eea;
+            font-weight: bold;
+            pointer-events: none;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover h3 {
+            color: #764ba2;
+            text-shadow: 0 0 10px rgba(118, 75, 162, 0.3);
+        }
+
+        .info-box h3::after {
+            content: '+';
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover h3::after {
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.6);
+        }
+
+        .center-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .center-section::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1), transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .character-image {
+            width: 100%;
+            max-width: 400px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('./imagenes/descargar.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 10px 30px rgba(102, 126, 234, 0.3));
+            transition: all 0.3s ease;
+        }
+
+        .character-image:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 15px 40px rgba(102, 126, 234, 0.4));
+        }
+
+        .info-box-right {
+            border: 3px solid #667eea;
+            padding: 0;
+            background: linear-gradient(145deg, #e8eafc 0%, #f5f6ff 100%);
+            min-height: 200px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                6px 6px 18px rgba(0, 0, 0, 0.15), 
+                -3px -3px 10px rgba(255, 255, 255, 0.7),
+                inset 0 0 20px rgba(102, 126, 234, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-box-right::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 65px;
+            background: linear-gradient(180deg, #d4d7f7 0%, rgba(72, 84, 190, 0.3) 100%);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+            opacity: 0.7;
+        }
+
+        .info-box-right::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent 70%
+            );
+            animation: shimmer 3s infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .info-box-right:hover::after {
+            opacity: 1;
+        }
+
+        .info-box-right:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 
+                10px 10px 30px rgba(0, 0, 0, 0.25), 
+                -4px -4px 15px rgba(255, 255, 255, 0.8),
+                0 0 30px rgba(102, 126, 234, 0.3);
+            border-color: #764ba2;
+        }
+
+        .info-box-right h3 {
+            font-size: 1.2em;
+            margin: 0;
+            padding: 20px;
+            color: #667eea;
+            font-weight: bold;
+            text-align: center;
+            pointer-events: none;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .info-box-right:hover h3 {
+            color: #764ba2;
+            text-shadow: 0 0 10px rgba(118, 75, 162, 0.3);
+        }
+
+        .info-box-right h3::after {
+            content: '+';
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .info-box-right:hover h3::after {
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.6);
+        }
+
+        .bottom-section {
+            padding-top: 30px;
+            border-top: 3px solid transparent;
+            border-image: linear-gradient(90deg, transparent, #667eea 20%, #764ba2 50%, #667eea 80%, transparent) 1;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .bottom-section::before {
+            content: '◆';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #667eea;
+            font-size: 20px;
+            background: white;
+            padding: 0 15px;
+        }
+
+        .characters-grid {
+            display: grid;
+            grid-template-columns: 200px repeat(3, 1fr);
+            gap: 30px;
+            align-items: end;
+            justify-items: center;
+        }
+
+        .gun-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 280px;
+            position: relative;
+        }
+
+        .gun-container::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(118, 75, 162, 0.1), transparent);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .gun-container img {
+            width: 324px;
+            height: auto;
+            object-fit: contain;
+            transform: rotate(-35deg);
+            transition: all 0.4s ease;
+            filter: drop-shadow(8px 8px 15px rgba(0, 0, 0, 0.4)) brightness(1.1) contrast(1.15) saturate(0.9);
+            position: relative;
+            z-index: 2;
+        }
+
+        .gun-container img:hover {
+            transform: rotate(-35deg) scale(1.15);
+            filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5)) brightness(1.2) contrast(1.2) saturate(1);
+        }
+
+        .character-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            height: 280px;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .character-item::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1), transparent);
+            animation: pulse 5s ease-in-out infinite;
+        }
+
+        .add-button {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .add-button::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            opacity: 0.5;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .add-button:hover {
+            transform: scale(1.15) rotate(90deg);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .character-image-small {
+            width: 150px;
+            height: 180px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: drop-shadow(0 5px 15px rgba(102, 126, 234, 0.3));
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .character-image-small:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 8px 20px rgba(102, 126, 234, 0.4));
+        }
+
+        .char-jose {
+            background-image: url(./imagenes/fddf2e_966ed4d4e00d446885c3e8f3ccdcc064-removebg-preview.png);
+        }
+
+        .char-ursula {
+            background-image: url(./imagenes/image-removebg-preview.png);
+        }
+
+        .char-amaranta {
+            background-image: url(./imagenes/1.png);
+        }
+
+        .character-name {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 249, 255, 0.95));
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 2px solid transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .character-name:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);
+            background: linear-gradient(135deg, white, rgba(248, 249, 255, 1));
+            border-color: #667eea;
+            color: #764ba2;
+        }
+
+        .corner-placeholder {
+            width: 150px;
+            height: 200px;
+            background-image: url('./imagenes/pngtree-cartoon-doodle-cigarette-png-image_15954767.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.2));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: scale(0.7) translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 100%);
+            padding: 0;
+            border: 4px solid #667eea;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 85vh;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 10px rgba(255, 255, 255, 0.1);
+            position: relative;
+            animation: slideIn 0.4s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        .modal-header h2 {
+            font-size: 1.8em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 2;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .modal-body {
+            padding: 30px;
+            overflow-y: auto;
+            flex-grow: 1;
+            background: linear-gradient(135deg, #ffffff 0%, #fafbff 100%);
+        }
+
+        .modal-section {
+            margin-bottom: 20px;
+        }
+
+        .modal-section h3 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+            padding-left: 10px;
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.1), transparent);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .modal-section p {
+            color: #444;
+            line-height: 1.8;
+            text-align: justify;
+            font-size: 0.95em;
+            white-space: pre-line;
+        }
+
+        .modal-body::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            border-radius: 10px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #764ba2, #667eea);
+        }
+
+        .modal-footer {
+            background: linear-gradient(135deg, #f5f5f5, #e8eafc);
+            padding: 15px;
+            text-align: center;
+            border-top: 2px solid #e0e0e0;
+            flex-shrink: 0;
+        }
+
+        .card-label {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .characters-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .character-image {
+                height: 300px;
+            }
+            .decorative-corner {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="decorative-corner top-left"></div>
+        <div class="decorative-corner top-right"></div>
+        <div class="decorative-corner bottom-left"></div>
+        <div class="decorative-corner bottom-right"></div>
+
+        <div class="header">
+            <h1>Cien años de soledad</h1>
+            <div class="footer-image">
+                <div class="corner-placeholder"></div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-column">
+                <div class="info-box" onclick="openInfoModal('intro')">
+                    <h3>Introducción</h3>
+                </div>
+                <div class="info-box" onclick="openInfoModal('autor')">
+                    <h3>Biografía del autor</h3>
+                </div>
+                <div class="info-box" onclick="openInfoModal('sintesis')">
+                    <h3>Síntesis propia</h3>
+                </div>
+                <div class="info-box" onclick="openInfoModal('opinion')">
+                    <h3>Opinión personal</h3>
+                </div>
+            </div>
+
+            <div class="center-section">
+                <div class="character-image"></div>
+            </div>
+
+            <div class="right-column">
+                <br/>
+                <div class="info-box-right" onclick="openInfoModal('fisica')">
+                    <h3>Descripción Física</h3>
+                </div>
+                <br/>
+                <div class="info-box-right" onclick="openInfoModal('psicologica')">
+                    <h3>Descripción Psicológica</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-section">
+            <div class="characters-grid">
+                <div class="gun-container">
+                    <img src="./imagenes/pngtree-weapon-revolver-death-revolver-object-vector-picture-image_9388283.png" alt="Revólver">
+                </div>
+
+                <div class="character-item">
+                    <div class="add-button" onclick="openModal(1)">+</div>
+                    <div class="character-image-small char-jose"></div>
+                    <div class="character-name" onclick="openModal(1)">José Arcadio Buendía</div>
+                </div>
+
+                <div class="character-item">
+                    <div class="add-button" onclick="openModal(2)">+</div>
+                    <div class="character-image-small char-ursula"></div>
+                    <div class="character-name" onclick="openModal(2)">Úrsula Iguarán</div>
+                </div>
+
+                <div class="character-item">
+                    <div class="add-button" onclick="openModal(5)">+</div>
+                    <div class="character-image-small char-amaranta"></div>
+                    <div class="character-name" onclick="openModal(5)">Amaranta Buendía</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="characterModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <h2 id="modalTitle">Nombre del Personaje</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>📖 Descripción</h3>
+                    <p id="modalDescription">Descripción del personaje...</p>
+                </div>
+                <div class="modal-section">
+                    <h3>🎭 Rol en la Historia</h3>
+                    <p id="modalRole">Rol del personaje...</p>
+                </div>
+                <div class="modal-section">
+                    <h3>🔗 Relaciones</h3>
+                    <p id="modalRelations">Relaciones...</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="card-label">Cien años de soledad</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close-btn" onclick="closeInfoModal()">&times;</span>
+                <h2 id="infoModalTitle">Título</h2>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <p id="infoModalContent">Contenido...</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="card-label">Cien años de soledad</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       const characters = {
+  1: {
+    name: "José Arcadio Buendía",
+    description: "José Arcadio Buendía es el fundador de Macondo y el patriarca de la familia Buendía. Es un hombre soñador, curioso, inteligente y profundamente idealista, pero también obsesionado, impulsivo y solitario. Su mente está siempre en búsqueda del conocimiento absoluto, fascinado por la ciencia, los inventos y los misterios del universo. Sin embargo, su deseo de descubrir la verdad lo lleva a alejarse de la realidad y terminar en la locura. Representa el espíritu de exploración y creación del ser humano, pero también la fragilidad y el aislamiento que produce la obsesión por lo imposible.",
+    role: `José Arcadio Buendía cumple un papel fundamental en Cien años de soledad:
+Es el origen del mito, quien funda Macondo después de huir de su pueblo tras matar a Prudencio Aguilar.
+Su historia marca el inicio del ciclo de la soledad, una constante que afecta a todas las generaciones de los Buendía.
+Representa el espíritu creador del hombre latinoamericano, que busca construir una nueva sociedad (Macondo) pero termina atrapado en su propio idealismo.
+Su evolución muestra el paso de la curiosidad científica al desequilibrio mental, simbolizando la corrupción del conocimiento cuando no tiene límites.
+Finalmente, su encierro bajo el árbol de castaño y su muerte reflejan la derrota del sueño humano frente al peso del tiempo, la culpa y la memoria.`,
+    relations: "Esposo de Úrsula Iguarán, padre de José Arcadio, Aureliano y Amaranta."
+  },
+ 2: {
+    name: "Úrsula Iguarán",
+    description: "Úrsula Iguarán es el pilar moral, emocional y práctico de la familia Buendía. Es una mujer fuerte, perseverante, inteligente y profundamente maternal, que se convierte en el verdadero corazón de Macondo. A diferencia de los hombres de su familia —soñadores, violentos o ensimismados—, Úrsula representa la razón, la continuidad y la supervivencia. Es capaz de enfrentar el caos con serenidad, mantener unida a la familia durante generaciones y adaptarse a cada tragedia con una aceptación casi profética. Aunque envejece y finalmente pierde la vista, su presencia es tan poderosa que parece desafiar el tiempo. Su vida simboliza la resistencia femenina ante la locura y la soledad masculina.",
+    role: `Úrsula cumple un papel esencial y constante a lo largo de Cien años de soledad:
+Es fundadora y sostén de Macondo, tanto como su esposo José Arcadio Buendía.
+Representa el orden y la estabilidad frente al descontrol de los hombres Buendía, que viven dominados por la pasión o la obsesión.
+Encara las desgracias familiares —incestos, muertes, guerras, locuras— con una mezcla de fortaleza moral y resignación sabia.
+A lo largo de las generaciones, su figura simboliza la memoria y continuidad del linaje Buendía, incluso cuando la familia cae en la decadencia.
+En su vejez, ciega y confundiendo el tiempo, encarna la metáfora de la historia cíclica de Macondo, donde pasado y presente se confunden hasta volverse uno solo.
+Su muerte marca el fin de la estabilidad y la humanidad en Macondo; cuando ella muere, la familia y el pueblo quedan sin guía, y todo comienza a desintegrarse.`,
+    relations: "Esposa de José Arcadio Buendía, madre y abuela de varias generaciones."
+  },
+            5: {
+                name: "Amaranta",
+                description: "Mujer de carácter fuerte y amargado. Rechazó el amor y vivió con resentimiento. Usaba una venda negra en la mano como símbolo de su virginidad.",
+                role: "Representa el amor frustrado y la amargura. Su rechazo al amor marca su destino trágico.",
+                relations: "Hija de José Arcadio y Úrsula, hermana del Coronel Aureliano."
+            }
+        };
+
+        const infoContent = {
+            intro: {
+                title: "📚 Introducción",
+                content: `"Cien años de soledad" es la obra maestra de Gabriel García Márquez, publicada en 1967. Esta novela narra la historia épica de la familia Buendía a lo largo de siete generaciones en el pueblo ficticio de Macondo.\n\nLa obra es considerada una de las más importantes de la literatura universal y uno de los mejores ejemplos del realismo mágico latinoamericano.`
+            },
+            autor: {
+                title: "✍️ Biografía del Autor",
+                content: `El autor de Cien años de soledad es Gabriel García Márquez, un escritor, periodista y novelista colombiano nacido el 6 de marzo de 1927 en Aracataca, Colombia, y fallecido el 17 de abril de 2014 en Ciudad de México.
+
+Es uno de los principales representantes del realismo mágico, un estilo literario que mezcla elementos fantásticos con la vida cotidiana. Su obra más famosa, Cien años de soledad (publicada en 1967), le dio reconocimiento mundial y lo convirtió en uno de los autores más importantes del siglo XX.
+
+En 1982 recibió el Premio Nobel de Literatura por el conjunto de su obra, que incluye también novelas como El amor en los tiempos del cólera y Crónica de una muerte anunciada.
+
+Su escritura refleja la historia, la cultura y las tradiciones de América Latina, combinadas con imaginación y crítica social.`
+            },
+            sintesis: {
+                title: "✏️ Síntesis Propia",
+                content: `Inicio:
+La historia comienza con José Arcadio Buendía y su esposa Úrsula Iguarán, quienes son primos y viven atormentados por el miedo a engendrar un hijo con cola de cerdo. Úrsula se niega a consumar el matrimonio hasta que un día, tras ganar una pelea de gallos, José Arcadio es humillado públicamente por Prudencio Aguilar, quien se burla de su vida célibe. Enfurecido, José Arcadio mata a Prudencio con una lanza. El fantasma del muerto comienza a aparecerse en su casa cada noche, lo que obliga a la pareja a huir. Junto a otras familias, atraviesan montañas y selvas hasta fundar Macondo, un pueblo idílico junto a un río de piedras cristalinas. Allí finalmente consuman su matrimonio y tienen tres hijos: José Arcadio, Aureliano (quien se convertirá en coronel) y Amaranta. Macondo se convierte en un lugar mágico donde lo imposible parece posible.
+Conflicto:
+La maldición de la soledad comienza a manifestarse en cada miembro de la familia. José Arcadio Buendía se obsesiona con los inventos que trae Melquíades, un gitano sabio que visita regularmente el pueblo. Su obsesión por la alquimia y el conocimiento lo vuelve loco, hasta que debe ser atado a un árbol de castaño donde pasará el resto de sus días.
+Los hijos Buendía inician relaciones complicadas y destructivas. José Arcadio tiene un romance con Pilar Ternera, una mujer alegre del pueblo, quien queda embarazada de Arcadio. Luego ese mismo José Arcadio huye con los gitanos y regresa años después cubierto de tatuajes, enorme y salvaje. Rebeca, una niña huérfana adoptada por la familia, estaba comprometida con Pietro Crespi, un refinado italiano que vino a instalar una pianola. Pero cuando José Arcadio regresa, Rebeca se enamora perdidamente de él y rompe su compromiso, consumando una relación casi incestuosa que escandaliza al pueblo.
+Pietro Crespi, destrozado, comienza a cortejar a Amaranta, pero ella —quien había deseado en secreto que la boda de Rebeca nunca se realizara— lo rechaza cruelmente. Pietro termina suicidándose. Amaranta se condena entonces a una vida de soledad autoimpuesta, llevando una venda negra en la mano como símbolo de su virginidad eterna. Sin embargo, su sobrino Aureliano José se obsesiona con ella en una pasión prohibida que nunca se consuma.
+Mientras tanto, el coronel Aureliano Buendía se casa con Remedios Moscote, una niña que apenas alcanza la pubertad. Ella muere joven, aparentemente de un aborto de gemelos. Devastado, el coronel se lanza a luchar en múltiples guerras civiles por el partido liberal, pero con el tiempo olvida por qué lucha. Durante sus campañas militares, engendra diecisiete hijos con diferentes mujeres en distintos pueblos, todos llamados Aureliano. Años después, dieciséis de ellos son asesinados sistemáticamente por el gobierno, marcados por una cruz de ceniza que un sacerdote les había puesto en la frente.
+Desarrollo:
+La familia se expande en generaciones cada vez más complejas. Arcadio, el hijo de José Arcadio y Pilar Ternera, se casa con Santa Sofía de la Piedad y tienen tres hijos: los gemelos Aureliano Segundo y José Arcadio Segundo, y Remedios la Bella. Esta última es una criatura de belleza sobrenatural e inocencia absoluta que camina desnuda por la casa sin entender las convenciones sociales. Su presencia causa la muerte de varios hombres que enloquecen de amor por ella. Un día, mientras cuelga sábanas en el patio, Remedios la Bella asciende al cielo en cuerpo y alma, llevándose consigo las sábanas de la familia.
+Los gemelos intercambian sus identidades sin que nadie lo note, excepto Úrsula, quien con su experiencia de más de cien años reconoce que los Aurelianos son pensativos y solitarios, mientras que los José Arcadio son impulsivos y sensuales. Aureliano Segundo se casa con Fernanda del Carpio, una mujer rígida y religiosa venida de la ciudad, pero mantiene una relación paralela con Petra Cotes, una amante generosa con quien experimenta una prosperidad mágica: sus animales se reproducen infinitamente cuando están juntos.
+Aureliano Segundo y Fernanda tienen tres hijos: Meme, José Arcadio (a quien envían a Roma para estudiar para Papa) y Amaranta Úrsula. Meme se enamora secretamente de Mauricio Babilonia, un mecánico humilde que siempre está rodeado de mariposas amarillas. Cuando Fernanda descubre el romance, hace disparar a Mauricio, dejándolo paralítico, y encierra a Meme en un convento. La joven nunca vuelve a hablar. Meme estaba embarazada, y Fernanda se lleva al bebé en secreto, diciéndole a todos que lo encontró abandonado. Ese niño es Aureliano Babilonia.
+Macondo experimenta transformaciones dramáticas. Llega una compañía bananera extranjera que trae prosperidad pero también explotación. Miles de trabajadores se declaran en huelga y el ejército los masacra en la estación del tren. José Arcadio Segundo es uno de los pocos sobrevivientes, pero nadie le cree cuando cuenta sobre los tres mil muertos que vio amontonados en vagones y arrojados al mar. La versión oficial niega que haya ocurrido masacre alguna.
+Después de la tragedia, Macondo es azotado por un diluvio que dura casi cinco años. El pueblo comienza a desmoronarse. Úrsula, quien había sido el pilar de la familia durante más de un siglo, finalmente muere. La casa Buendía se deteriora junto con el pueblo. Las nuevas generaciones quedan aisladas en una casa cada vez más ruinosa.
+Final:
+Aureliano Babilonia crece como un ser solitario, dedicado a descifrar los misteriosos pergaminos que Melquíades dejó escritos en sánscrito. Amaranta Úrsula regresa de Europa casada con Gastón, un aviador belga, pero entre ella y Aureliano nace un amor apasionado y genuino. Sin saber que son tía y sobrino, se entregan a una relación que finalmente rompe el círculo de soledad que había condenado a la familia. Por primera vez, dos Buendía se aman verdaderamente.
+Amaranta Úrsula queda embarazada y da a luz a un niño hermoso, pero con cola de cerdo: la maldición ancestral finalmente se cumple. Ella muere desangrada tras el parto. Aureliano Babilonia, destrozado, sale a ahogar su dolor en alcohol mientras el bebé queda solo en la casa. Cuando regresa, descubre horrorizado que las hormigas se están comiendo a su hijo.
+En ese momento de absoluta desesperación, Aureliano Babilonia logra finalmente descifrar los pergaminos de Melquíades. Descubre que los manuscritos narran con exactitud toda la historia de la familia Buendía, escrita cien años antes de que ocurriera. Lee su propia vida y su presente en tiempo real: "El primero de la estirpe está amarrado a un árbol y al último se lo están comiendo las hormigas". Mientras lee las últimas líneas que describen el momento mismo en que está leyendo, un huracán apocalíptico comienza a destruir Macondo.
+Aureliano Babilonia comprende que su familia estaba condenada desde el principio, que nunca tuvieron una segunda oportunidad sobre la tierra, porque las estirpes condenadas a cien años de soledad no tienen una segunda oportunidad. El viento borra a Macondo del mapa y de la memoria de los hombres, como si nunca hubiera existido.
+La profecía se cumple: una familia que nunca pudo romper el círculo de su propia soledad desaparece para siempre, llevándose consigo toda su historia, sus pasiones, sus guerras y sus secretos.`
+            },
+            opinion: {
+                title: "💭 Opinión Personal",
+                content: `Debo admitir que esta novela me costó bastante al principio. Los personajes repiten los mismos nombres y la historia salta en el tiempo de forma confusa. Tuve que releerla más de una vez para entender quién era quién y cómo se conectaban las generaciones. Pero justo esa complejidad es parte de lo que hace brillante a García Márquez.
+                Lo que más me impacta:
+                A pesar de todos los elementos mágicos como gente que asciende al cielo o lluvias de cinco años, lo que realmente duele de esta historia es lo humano. Los Buendía están atrapados repitiendo los mismos errores: amores prohibidos, guerras sin sentido, soledad autoimpuesta. Es angustiante ver cómo ninguno logra conectar realmente con otro, como si estuvieran programados para destruirse.
+
+                Lo que me perturba:
+                Me resulta angustiante cómo ningún Buendía logra realmente conectar con otro. Incluso cuando se aman, como Aureliano Babilonia y Amaranta Úrsula, el amor llega demasiado tarde y está marcado por el incesto. Es como si García Márquez nos dijera que algunas familias están condenadas no por fuerzas externas, sino por su incapacidad de romper sus propios muros emocionales. El coronel Aureliano peleando guerras sin recordar por qué, Amaranta rechazando el amor por despecho, José Arcadio Buendía atado a un árbol por su locura... todos eligieron su propia soledad.
+                
+                Reflexión final:
+                Creo que García Márquez logró algo extraordinario: escribir sobre un pueblo inventado en medio de la selva con eventos imposibles, pero hacer que todo se sienta profundamente verdadero. Porque todos conocemos familias así, personas así, atrapadas en sus propias historias sin salida. La novela es una advertencia: si no rompemos nuestros ciclos de soledad, aislamiento y orgullo, estamos condenados a desaparecer como Macondo, borrados por el viento del olvido.
+                Lo más triste es que los Buendía tuvieron cien años, siete generaciones, infinitas oportunidades para cambiar su destino. Pero nunca lo hicieron. Y eso, más que cualquier elemento mágico, es lo verdaderamente trágico de esta historia.`
+            },
+        
+                
+            fisica: {
+                title: "👤 Descripción Física",
+                content: `Aureliano Buendía, hijo de José Arcadio Buendía y Úrsula, es el primer ser humano nacido en Macondo. Físicamente, se caracteriza por una constitución delgada pero resistente, forjada en años de campaña militar. Su cabello es oscuro y su rostro angular revela rasgos marcados por la tensión constante.
+                          Lo más distintivo son sus ojos: nacido con los ojos abiertos, poseen una intensidad penetrante y una cualidad clarividente que perturba a quienes lo miran. Son ojos oscuros que parecen ver más allá del presente, capaces de percibir el futuro y leer las intenciones ocultas de las personas. Su mirada refleja tanto su inteligencia aguda como la profunda tristeza que habita en su interior.
+                          Su porte es erguido pero reservado, con movimientos medidos que transmiten control absoluto. Sus manos, hábiles tanto para la guerra como para el delicado trabajo de orfebrería, revelan la dualidad de su naturaleza. Con el paso de los años y las batallas, su cuerpo adquiere las marcas de un guerrero legendario: cicatrices de catorce atentados contra su vida, setenta y tres emboscadas, y los estragos de una dosis letal de estricnina que milagrosamente sobrevivió.`
+            },
+            psicologica: {
+                title: "🧠 Descripción Psicológica",
+                content: `Aureliano Buendía es un hombre profundamente solitario, cerrado y enigmático, cuya vida está marcada por el silencio y la distancia emocional. Desde su nacimiento muestra una inteligencia precoz y un aire melancólico, como si ya supiera que está destinado a vivir apartado del mundo. Es frío y reservado, pero también observador y reflexivo, siempre perdido en sus pensamientos, incapaz de compartir lo que siente. Tiene una mirada dura, que parece leer el futuro, y una mente aguda, analítica y calculadora, aunque muchas veces su genialidad se mezcla con una tristeza profunda.
+                          Aureliano es terco y obstinado, incapaz de rendirse, incluso cuando todo está perdido. Su valentía roza la locura, y su orgullo lo lleva a enfrentarse al poder, a los hombres y hasta a sí mismo. Durante la guerra se convierte en un líder temido y respetado, pero también en un hombre vacío, cansado del dolor y la violencia. A pesar de su fuerza, hay en él una incapacidad para amar, un hueco emocional que lo acompaña toda la vida.
+                          Cuando la gloria se apaga, se encierra en su taller a fabricar pececitos de oro, repitiendo el mismo gesto una y otra vez, como si intentara darle sentido a lo que ya no lo tiene. Vive atrapado en la rutina, la nostalgia y el silencio, hasta morir solo, olvidado y resignado. En el fondo, Aureliano Buendía es un hombre valiente pero triste, sabio pero roto por dentro, un símbolo de la soledad que persigue a toda su familia.
+`
+            }
+        };
+
+        function openModal(characterId) {
+            const character = characters[characterId];
+            document.getElementById('modalTitle').textContent = character.name;
+            document.getElementById('modalDescription').textContent = character.description;
+            document.getElementById('modalRole').textContent = character.role;
+            document.getElementById('modalRelations').textContent = character.relations;
+            document.getElementById('characterModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('characterModal').classList.remove('active');
+        }
+
+        function openInfoModal(type) {
+            const info = infoContent[type];
+            document.getElementById('infoModalTitle').textContent = info.title;
+            document.getElementById('infoModalContent').textContent = info.content;
+            document.getElementById('infoModal').classList.add('active');
+        }
+
+        function closeInfoModal() {
+            document.getElementById('infoModal').classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            const characterModal = document.getElementById('characterModal');
+            const infoModal = document.getElementById('infoModal');
+            
+            if (event.target == characterModal) {
+                closeModal();
+            }
+            if (event.target == infoModal) {
+                closeInfoModal();
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+                closeInfoModal();
+            }
+        });
+    </script>
+</body>
+</html>
